@@ -6,6 +6,54 @@
         <title>Purple task</title>
     </head>
     <body>
-        import NTKL
+        {% if noani %}
+        <p id="top-noani" data-en="Group F">No, I don't</p> 
+        <div class="line-noani">
+            <div class="line2-noani">
+            <div>
+        {% else %}
+        <p id="top" data-en="Group F">No, I don't</p> 
+        <div class="line">
+            <div class="line2">
+            <div class="lineAppear">
+        {% endif %}
+            <!-- input -->
+            <label>Input text:</label>
+            <br>
+            <input type="text" size="50" id="sentence" value="{{param}}">
+            <input type="button" value="Run" id="RunButton" formmethod="post">
+            <br>
+    
+            <!-- output  -->
+            <br>
+            <label>Output (Yes/No will be selected at random):</label>
+            <p id="output_text"></p>
+            
+            {% for res in result %}
+            <p>{{ res[0] }}</br>> {{ res[1] }}</p>
+            {% endfor %}
+    
+            </div>
+            </div>
+        </div>
+        {% if noani %}
+        <div id="example-noani">
+        {% else %}
+        <div id="example">
+        {% endif %}
+            <div id="image"></div>
+            <h2>"Some Example"</h2>
+            <p>Is he human?<br>> No, he isn't.</p>
+            <p>Are you from Japan?<br>> No, I'm not.</p>
+            <p>Was he human?<br>> No, he wasn't.</p>
+            <p>Were you sick?<br>> Yes, I was.</p>
+            <p>Do they know each other?<br>> Yes, they do.</p>
+            <p>Does she go to shopping?<br>> No, she doesn't.</p>
+            <p>Did you buy a camera?<br>> No, I didn't.</p>
+            <p>Have you been in Japan?<br>> Yes, I have.</p>
+            <p>Has he ever been to the USA?<br>> Yes, he has.</p>
+            <p>Had you ever been to New York before you sta
+            rted university?<br>> Yes, I had.</p> 
+        </div>
     </body>
 </html>
