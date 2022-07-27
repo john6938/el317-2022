@@ -11,7 +11,7 @@ def index():
         return render_template("index.html")
     else:
         result = eng.get_result(sentence)
-        return render_template("index.html", result=result)
+        return render_template("index.html", result=result, sentence=sentence, noani='True')
 
 if __name__ == '__main__':
     app.run()
