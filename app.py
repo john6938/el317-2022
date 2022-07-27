@@ -1,18 +1,15 @@
-from flask import Flask, render_template
-import nltk
+from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
 @app.route('/')
+@app.route("/index")
 def index():
-    text = 'Is he human?'
-    try:
-      morph = nltk.word_tokenize(text)
-      pos = nltk.pos_tag(morph)
-    except:
-      nltk.download('punkt')
-      nltk.download('averaged_perceptron_tagger')
-    return render_template("index.html")
+    sentence = request.args.get("sentence")
+    if sentence == None:
+        return render_template("index.html")
+    else:
+        return render_template("index.html", result='a')
 
 if __name__ == '__main__':
     app.run()
