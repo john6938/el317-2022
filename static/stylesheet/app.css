@@ -1,0 +1,270 @@
+/* ===============全体と背景 ================*/
+body{
+    position: relative;
+    margin: 0;
+    width: auto;
+    height: auto;
+    background-size:cover;
+    background-position:center;
+    background-attachment: fixed;
+    background-image:
+    linear-gradient(140deg, 
+        #efefe5fd, 
+        #e8fbf3 40%, 
+        #e7f8f6 60%, 
+        #ffffffa0), 
+        url("https://owls-cr.co.jp/images/index/mv/p3.jpg");
+    background-repeat: no-repeat;
+    background-position: 50%;
+    animation: move 20s infinite both;
+    }    
+    
+@keyframes move{
+    0% {
+        background-size:100% auto;
+    }
+    50% {
+        background-size:120% auto;
+    }
+    100% {
+        background-size:100% auto;
+    }
+}
+
+/* =========見出しのレイアウトとアニメーション =========*/
+#top{
+    display: inline-block;
+    padding: 0 65px;
+    color: #000000fd;
+    position: relative;
+	font-size: 40px;
+	text-align: center;
+    text-shadow: 2px 2px gray;
+    animation-name: FadeinAnime;
+    animation-duration: 1.5s;
+    animation-fill-mode: forwards;
+    animation-delay: 1s;
+    opacity: 0;
+}
+
+#top::after {
+	content: attr(data-en);
+	position: absolute;
+	top: -30px;
+	left: 0;
+    text-shadow: 0px 0px;
+	transform: translateX(-50%);
+    transform: rotate(-3deg);
+	color: rgba(154, 57, 112, 0.306);
+	font-size: 40px;
+    font-family: luxus-brut, cursive;
+	font-style: italic;
+    opacity: 50%;
+}
+
+@keyframes FadeinAnime{
+    0% {
+        opacity: 0%;
+    }
+    100% {
+        opacity: 100%;
+    }
+}
+
+/* =========入出力のレイアウトとアニメーション =========*/
+.line{
+    position: relative; /* 枠線が書かれる基点*/
+    padding: 20px;
+    margin:0 20px 20px 20px;
+    border-radius: 8px;
+    box-sizing:border-box;
+}
+
+/*上下線*/
+.line::before,
+.line::after{
+    position: absolute;
+    content:"";
+    width:0;
+    height:2px;
+    box-shadow: 4px 4px;
+    background:#333;/* 枠線の色*/
+}
+
+/*左右線*/
+.line2::before,
+.line2::after{
+    position: absolute;
+    content:"";
+    width: 2px;
+    height:0;
+    box-shadow: 4px 4px;
+    background:#333;/* 枠線の色*/
+}
+
+/*上線*/
+.line::before {
+    top:0;
+    left:0;
+    animation: lineAnime 1s ease-out 0s forwards;/*表示されて0秒後に上線が1秒かけて表示*/
+}
+
+/*右線*/
+.line2::before{ 
+    top:0;
+    right:0;
+    animation: lineAnime2 1s ease-out 0s forwards;/*表示されて0秒後に右線が1秒かけて表示*/
+}
+
+/*下線*/
+.line::after { 
+    bottom:0;
+    right:0;
+    animation: lineAnime 1s ease-out 0s forwards;/*表示されて0秒後に下線が1秒かけて表示*/
+}
+
+/*左線*/
+.line2::after{ 
+    bottom:0;
+    left:0;
+    animation: lineAnime2 1s ease-out 0s forwards;/*表示されて0秒後に左線が1秒かけて表示*/
+}
+
+@keyframes lineAnime {
+    0% {width:0%;}
+    100%{width:100%;}
+}
+@keyframes lineAnime2 {
+    0% {height:0%;}
+    100%{height:100%;}
+}
+
+/*枠線内側の要素*/
+.line .lineAppear{
+    animation: lineInnerAnime 1.5s linear 1s forwards;/*1秒後に中央のエリアが1.5秒かけて表示*/
+    opacity: 0;/*初期値を透過0にする*/ 
+}
+
+@keyframes lineInnerAnime{
+    0% {opacity:0;}
+    100% {opacity:1;}
+}
+
+/* ================example ==================*/
+#example{
+    padding-left: 30px;
+    animation-name: FadeinAnime;
+    animation-duration: 1.5s;
+    animation-fill-mode: forwards;
+    animation-delay: 1s;
+    opacity: 0;
+}
+
+@keyframes FadeinAnime{
+    0% {
+        opacity: 0%;
+    }
+    100% {
+        opacity: 100%;
+    }
+}
+
+/* =========RunButtonのcss =========*/
+#RunButton{
+    border-radius:30px; 
+}
+
+#RunButton:hover{
+    background:#000;
+    color:#fff;
+}
+
+/* ========= アニメーションなし =========*/
+#top-noani{
+    display: inline-block;
+    padding: 0 65px;
+    color: #000000fd;
+    position: relative;
+	font-size: 40px;
+	text-align: center;
+    text-shadow: 2px 2px gray;
+}
+
+#top-noani::after {
+	content: attr(data-en);
+	position: absolute;
+	top: -30px;
+	left: 0;
+    text-shadow: 0px 0px;
+	transform: translateX(-50%);
+    transform: rotate(-3deg);
+	color: rgba(154, 57, 112, 0.153);
+	font-size: 40px;
+    font-family: luxus-brut, cursive;
+	font-style: italic;
+}
+
+.line-noani{
+    position: relative;
+    padding: 20px;
+    margin:0 20px 20px 20px;
+    border-radius: 8px;
+    box-sizing:border-box;
+}
+
+.line-noani::before,
+.line-noani::after{
+    position: absolute;
+    content:"";
+    width:0;
+    height:2px;
+    box-shadow: 4px 4px;
+    background:#333;
+}
+
+.line2-noani::before,
+.line2-noani::after{
+    position: absolute;
+    content:"";
+    width: 2px;
+    height:0;
+    box-shadow: 4px 4px;
+    background:#333;
+}
+
+.line-noani::before {
+    top:0;
+    left:0;
+    animation: lineAnime-noani 1s ease-out 0s forwards;
+}
+
+.line2-noani::before{ 
+    top:0;
+    right:0;
+    animation: lineAnime2-noani 1s ease-out 0s forwards;
+}
+
+.line-noani::after { 
+    bottom:0;
+    right:0;
+    animation: lineAnime-noani 1s ease-out 0s forwards;
+}
+
+.line2-noani::after{ 
+    bottom:0;
+    left:0;
+    animation: lineAnime2-noani 1s ease-out 0s forwards;
+}
+
+@keyframes lineAnime-noani {
+    0% {width:100%;}
+    100%{width:100%;}
+}
+@keyframes lineAnime2-noani {
+    0% {height:100%;}
+    100%{height:100%;}
+}
+
+#example-noani{
+    padding-left: 30px;
+}
