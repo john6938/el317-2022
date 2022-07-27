@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request
+import eng
 
 app = Flask(__name__)
 
@@ -9,7 +10,8 @@ def index():
     if sentence == None:
         return render_template("index.html")
     else:
-        return render_template("index.html", result='a')
+        result = eng.get_result(sentence)
+        return render_template("index.html", result=result)
 
 if __name__ == '__main__':
     app.run()

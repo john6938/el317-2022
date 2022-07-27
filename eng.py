@@ -77,17 +77,6 @@ def define_sentences(pos, question_sentences):
     return defined_sentences
 
 
-# 入力された疑問文を表示
-def print_question_sentence(pos, start, end):
-    sentence = ''
-    sentence += pos[start][0]
-    for i in range(start+1, end+1):
-        if pos[i][1] != '.':
-            sentence += f' {pos[i][0]}'
-        else:
-            sentence += f'{pos[i][0]}'
-
-
 # 疑問文に対する答え
 def create_answer(subject, verb):
     verb = verb.lower()
@@ -99,29 +88,6 @@ def create_answer(subject, verb):
             return f"No, {subject}'m not."
         else:
             return f"No, {subject} {verb}n't."
-        
-# for green-task
-def res(text):
-    # text = input()
-    # text = 'Do I human?'
-    # text = 'Is he human? Are you from Japan? Was he human? Were you sick? Do they know each other? Does she go to shopping? Did you buy a camera? Have you been in Japan? Has he ever been to the USA? Had you ever been to New York before you started university?'
-    # text = 'Do huh ?'
-    # avoid module errors.
-    try:
-      morph = nltk.word_tokenize(text)
-      pos = nltk.pos_tag(morph)
-    except:
-      nltk.download('punkt')
-      nltk.download('averaged_perceptron_tagger')
-      morph = nltk.word_tokenize(text)
-      pos = nltk.pos_tag(morph)
-
-    question_marks = find_question_marks(pos)
-    question_sentences = find_question_sentences(pos, question_marks)
-    defined_sentences = define_sentences(pos, question_sentences)
-
-    result = [create_answer(ds[2], ds[3]) for ds in defined_sentences]
-    return result
 
 
 # for purple-task HTML用
@@ -138,6 +104,7 @@ def display_question_sentence(pos, defined_sentences):
                 sentence += f'{pos[i][0]}'
         result.append(sentence)
     return result
+
 
 # for purple-task HTML用
 def get_result(text):
@@ -161,16 +128,3 @@ def get_result(text):
         result.append((qs[i], res[i]))
 
     return result
-
-
-# text = "Two frogs, a father and his son, accidentally fell into a bucket of milk. They started swimming for their lives. They swam for a long time, but there seemed no hope of their getting out. The father soon gave up and drowned. The son carried on swimming. During this time, the milk had begun to form a ball of butter. Using this island of butter as a platform, he managed to hop out of the bucket."
-# text = 'Is he human?'
-# text = 'Are you from Japan?'
-# text = 'Was he human?'
-# text = 'Were you sick?'
-# text = 'Do they know each other?'
-# text = 'Does she go to shopping?'
-# text = 'Did you buy a camera?'
-# text = 'Have you been in Japan?'
-# text = 'Has he ever been to the USA?'
-# text = 'Had you ever been to New York before you started university?'
