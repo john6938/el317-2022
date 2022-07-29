@@ -3,7 +3,7 @@ from random import randint
 
 
 FIRST_WORDS = ['Is', 'Are', 'Was', 'Were', 'Do', 'Does', 'Did', 'Have', 'Has', 'Had']
-
+PLURAL = ['everyone', 'many', 'any']
 
 # 疑問符を見つける / find question marks
 def find_question_marks(pos):
@@ -52,6 +52,12 @@ def define_sentences(pos, question_sentences):
             # 動詞の確認
             if tag[:2] == 'VB':
                 verb_flag = True
+
+            # some people, japanese people
+            if tag == 'NNS' or word in PLURAL:
+                if verb_flag:
+                    break
+                subject = 'they'
 
             # 例外(？) Tom and Jerry など
             # 主語の優先度はandの方が高いとする

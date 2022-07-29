@@ -1,5 +1,8 @@
 /* ===============全体と背景 ================*/
 body{
+    /* text-align: center; */
+    padding-left: 10%;
+    padding-right: 10%;
     position: relative;
     margin: 0;
     width: auto;
@@ -171,11 +174,14 @@ body{
 
 /* =========RunButtonのcss =========*/
 #RunButton{
-    border-radius:30px; 
+    /* border-radius:30px;  */
+    font-size: 2em;
+    width: auto+10px;
+    font-family: Georgia, serif;
 }
 
 #RunButton:hover{
-    background:#000;
+    background:rgb(76, 76, 76);
     color:#fff;
 }
 
@@ -267,4 +273,19 @@ body{
 
 #example-noani{
     padding-left: 30px;
+}
+
+.indent {
+    margin-left: 30px;
+}
+
+#sentence {
+    height: auto;
+    max-width: 800px;
+    font-size: 2em;
+}
+
+
+.left {
+    text-align: left!important;
 }

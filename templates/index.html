@@ -8,30 +8,32 @@
     </head>
     <body>
         {% if noani %}
-        <p id="top-noani" data-en="Group F">No, I don't</p> 
+        <p id="top-noani" data-en="Group F" class="left">No, I don't</p> 
         <div class="line-noani">
             <div class="line2-noani">
             <div>
         {% else %}
-        <p id="top" data-en="Group F">No, I don't</p> 
+        <p id="top" data-en="Group F" class="left">No, I don't</p> 
         <div class="line">
             <div class="line2">
             <div class="lineAppear">
         {% endif %}
             <!-- input -->
-            <label>Input text:</label>
+            <label><b>Input text:</b></label>
             <br>
+            <div style="display: inline">
             <input type="text" size="50" id="sentence" value="{{sentence}}">
-            <input type="button" value="Run" id="RunButton">
+            <input type="button" value="Analyze" id="RunButton">
+            </div>
             <br>
     
             <!-- output  -->
             <br>
-            <label>Output (Yes/No will be selected at random):</label>
+            <label><b>Output (Yes/No will be selected at random):</b></label>
             <p id="output_text"></p>
             
             {% for res in result %}
-            <p>{{ res[0] }}</br>> {{ res[1] }}</p>
+            <p class="indent">{{ res[0] }}</br>> {{ res[1] }}</p>
             {% endfor %}
     
             </div>
@@ -53,8 +55,8 @@
             <p>Did you buy a camera?<br>> No, I didn't.</p>
             <p>Have you been in Japan?<br>> Yes, I have.</p>
             <p>Has he ever been to the USA?<br>> Yes, he has.</p>
-            <p>Had you ever been to New York before you sta
-            rted university?<br>> Yes, I had.</p> 
+            <p>Had you ever been to New York before you started university?<br>> Yes, I had.</p>
+            <p>Do everyone of this class love Mr.John?<br>> Yes, I had.</p>
         </div>
     </body>
 </html>
